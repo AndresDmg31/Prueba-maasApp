@@ -27,6 +27,7 @@ class CardsListMainModuleViewController: UIViewController, CardsListMainModuleVi
     override func viewDidLoad() {
         super.viewDidLoad()
         nav = self.navigationController
+        view.backgroundColor = .white
         customizeUI()
         customizeNavigation()
         addViews()

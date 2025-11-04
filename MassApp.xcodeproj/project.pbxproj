@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		B07F63EF2EBABC7A004FC8FF /* MassApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MassApp.xcodeproj; sourceTree = "<group>"; };
 		B08D4A272EBA9D1A003980DD /* MassApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MassApp.xcodeproj; sourceTree = "<group>"; };
 		B0BED6572EB9866900799263 /* MassApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MassApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0EFD0582EBAA6D000D68753 /* MassApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MassApp.xcodeproj; sourceTree = "<group>"; };
@@ -44,6 +45,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B07F63F22EBABC7A004FC8FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		B08D4A2A2EBA9D1A003980DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +136,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = B07F63F22EBABC7A004FC8FF /* Products */;
+					ProjectRef = B07F63EF2EBABC7A004FC8FF /* MassApp.xcodeproj */;
+				},
+				{
 					ProductGroup = B08D4A2A2EBA9D1A003980DD /* Products */;
 					ProjectRef = B08D4A272EBA9D1A003980DD /* MassApp.xcodeproj */;
 				},
@@ -176,7 +188,6 @@
 				INFOPLIST_FILE = MassApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -208,7 +219,6 @@
 				INFOPLIST_FILE = MassApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
