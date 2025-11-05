@@ -7,11 +7,6 @@
 
 import UIKit
 
-enum voucherFlow{
-    case transaction,sealedBanck,digitalSignature,startDate,endDate,account,iban,detailId,voucherId,legalId
-}
-
-
 class CardsListMainModulePresenter: CardsListMainModulePresenterProtocol {
    
     
