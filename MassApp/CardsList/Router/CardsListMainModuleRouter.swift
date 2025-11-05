@@ -10,6 +10,6 @@ import UIKit
 class CardsListMainModuleRouter: CardsListMainModuleRouterProtocol {
     weak var view: CardsListMainModuleViewProtocol?
     var viewPresenter: CardsListMainModulePresenterProtocol?
-    
+
 }
 
