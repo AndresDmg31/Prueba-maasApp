@@ -10,7 +10,7 @@
   - Registro y validación de tarjetas TuLlave desde un API externo
   - Consulta de nombre, perfil y saldo de cada tarjeta
   - Almacenamiento local de tarjetas en el dispositivo
-  - Eliminación y selección de múltiples tarjetas
+  - Eliminación de tarjetas (deslizando hacia la izquierda)
   - Visualización de paraderos cercanos en mapa
   - Interfaz construida con UIKit
 
