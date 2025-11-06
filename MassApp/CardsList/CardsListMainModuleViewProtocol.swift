@@ -28,6 +28,7 @@ protocol CardsListMainModulePresenterProtocol: AnyObject {
     func validateAndSaveCard(serial: String)
     func deleteCard(at index: Int)
     func selectCard(at index: Int)
+    func locationButtonTap()
 }
 
 protocol CardsListMainModuleInteractorProtocol: AnyObject {
@@ -44,5 +45,7 @@ protocol CardsListMainModuleInteractorProtocol: AnyObject {
 protocol CardsListMainModuleRouterProtocol: AnyObject {
     var view: CardsListMainModuleViewProtocol? { get set }
     var viewPresenter: CardsListMainModulePresenterProtocol? { get set }
+    var navigation: UINavigationController? {get set}
+    func locationButtonNext()
 }
 

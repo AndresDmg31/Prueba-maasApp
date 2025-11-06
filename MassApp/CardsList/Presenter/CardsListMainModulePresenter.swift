@@ -8,7 +8,7 @@
 import Foundation
 
 class CardsListMainModulePresenter: CardsListMainModulePresenterProtocol {
-
+   
     weak var view: CardsListMainModuleViewProtocol?
     var interactor: CardsListMainModuleInteractorProtocol?
     var router: CardsListMainModuleRouterProtocol?
@@ -23,6 +23,11 @@ class CardsListMainModulePresenter: CardsListMainModulePresenterProtocol {
     func loadInitialData() {
         loadCards()
     }
+    
+    func locationButtonTap() {
+        router?.locationButtonNext()
+    }
+    
 
     func validateAndSaveCard(serial: String) {
         let trimmedSerial = serial.trimmingCharacters(in: .whitespacesAndNewlines)

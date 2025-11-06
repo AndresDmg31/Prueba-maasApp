@@ -21,6 +21,7 @@ class CardsListMainModuleViewController: UIViewController, CardsListMainModuleVi
     private var emptyStateSubtitleLabel: UILabel!
     private var activityIndicator: UIActivityIndicatorView!
     private var floatingActionButton: UIButton!
+    private var locationButton: UIButton!
     private var headerView: UIView!
     private var cardIconImageView: UIImageView!
     private var titleLabel: UILabel!
@@ -41,7 +42,7 @@ class CardsListMainModuleViewController: UIViewController, CardsListMainModuleVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nav = self.navigationController
+        viewPresenter?.router?.navigation = self.navigationController
         view.backgroundColor = .white
         customizeUI()
         customizeNavigation()
@@ -75,6 +76,7 @@ class CardsListMainModuleViewController: UIViewController, CardsListMainModuleVi
         setupEmptyState()
 
         setupFloatingActionButton()
+        setuplocationButton()
 
         activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -136,7 +138,7 @@ class CardsListMainModuleViewController: UIViewController, CardsListMainModuleVi
 
         emptyStateSubtitleLabel = UILabel()
         emptyStateSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        emptyStateSubtitleLabel.text = "Toca el botón para agregar una nueva tarjeta"
+        emptyStateSubtitleLabel.text = "Toca el botón + para agregar una nueva tarjeta"
         emptyStateSubtitleLabel.font = .systemFont(ofSize: 16)
         emptyStateSubtitleLabel.textColor = .gray
         emptyStateSubtitleLabel.textAlignment = .center
@@ -177,6 +179,24 @@ class CardsListMainModuleViewController: UIViewController, CardsListMainModuleVi
 
         floatingActionButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
     }
+    
+    private func setuplocationButton() {
+        locationButton = UIButton(type: .system)
+        locationButton.translatesAutoresizingMaskIntoConstraints = false
+        locationButton.backgroundColor = CardsListMainModuleViewController.appGreenColor
+        locationButton.tintColor = .white
+        locationButton.setImage(UIImage(systemName: "location"), for: .normal)
+        locationButton.setImage(UIImage(systemName: "location"), for: .highlighted)
+        locationButton.layer.cornerRadius = 28
+        locationButton.layer.shadowColor = UIColor.black.cgColor
+        locationButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        locationButton.layer.shadowRadius = 4
+        locationButton.layer.shadowOpacity = 0.2
+
+        locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
+    }
+
+    
 
     func customizeNavigation() {
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -188,6 +208,7 @@ class CardsListMainModuleViewController: UIViewController, CardsListMainModuleVi
         view.addSubview(emptyStateView)
         view.addSubview(activityIndicator)
         view.addSubview(floatingActionButton)
+        view.addSubview(locationButton)
     }
 
     func addConstrains() {
@@ -213,7 +234,12 @@ class CardsListMainModuleViewController: UIViewController, CardsListMainModuleVi
             floatingActionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             floatingActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             floatingActionButton.widthAnchor.constraint(equalToConstant: 56),
-            floatingActionButton.heightAnchor.constraint(equalToConstant: 56)
+            floatingActionButton.heightAnchor.constraint(equalToConstant: 56),
+            
+            locationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            locationButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            locationButton.widthAnchor.constraint(equalToConstant: 56),
+            locationButton.heightAnchor.constraint(equalToConstant: 56)
         ])
     }
 
@@ -221,6 +247,10 @@ class CardsListMainModuleViewController: UIViewController, CardsListMainModuleVi
 
     @objc private func addButtonTapped() {
         showAddCardAlert()
+    }
+    
+    @objc private func locationButtonTapped() {
+        viewPresenter?.locationButtonTap()
     }
 
      func showAddCardAlert() {

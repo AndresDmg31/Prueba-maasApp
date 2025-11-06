@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		B043761C2EBD1C58001D190F /* MassApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MassApp.xcodeproj; sourceTree = "<group>"; };
+		B0611DCC2EBD1EC200F18B47 /* MassApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MassApp.xcodeproj; sourceTree = "<group>"; };
 		B07F63EF2EBABC7A004FC8FF /* MassApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MassApp.xcodeproj; sourceTree = "<group>"; };
 		B08D4A272EBA9D1A003980DD /* MassApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MassApp.xcodeproj; sourceTree = "<group>"; };
 		B0BED6572EB9866900799263 /* MassApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MassApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +47,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B043761D2EBD1C58001D190F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B0611DCD2EBD1EC200F18B47 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		B07F63F22EBABC7A004FC8FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +151,14 @@
 			productRefGroup = B0BED6582EB9866900799263 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = B043761D2EBD1C58001D190F /* Products */;
+					ProjectRef = B043761C2EBD1C58001D190F /* MassApp.xcodeproj */;
+				},
+				{
+					ProductGroup = B0611DCD2EBD1EC200F18B47 /* Products */;
+					ProjectRef = B0611DCC2EBD1EC200F18B47 /* MassApp.xcodeproj */;
+				},
 				{
 					ProductGroup = B07F63F22EBABC7A004FC8FF /* Products */;
 					ProjectRef = B07F63EF2EBABC7A004FC8FF /* MassApp.xcodeproj */;
