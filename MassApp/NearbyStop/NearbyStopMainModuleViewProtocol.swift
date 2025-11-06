@@ -18,6 +18,7 @@ protocol NearbyStopMainModuleViewProtocol: AnyObject {
     func showLoadingIndicator(_ show: Bool)
     func showError(_ message: String)
     func updateLocationButtonState(isEnabled: Bool)
+    func showNearbyStops(_ stops: [NearbyStop])
 }
 
 protocol NearbyStopMainModulePresenterProtocol: AnyObject {
@@ -32,10 +33,11 @@ protocol NearbyStopMainModulePresenterProtocol: AnyObject {
 }
 
 protocol NearbyStopMainModuleInteractorProtocol: AnyObject {
-    var presenter:NearbyStopMainModulePresenterProtocol? { get set }
+    var presenter: NearbyStopMainModulePresenterProtocol? { get set }
 
     func requestCurrentLocation(completion: @escaping (Result<UserLocation, LocationError>) -> Void)
     func checkLocationAuthorizationStatus() -> CLAuthorizationStatus
+    func fetchNearbyStops(location: LocationCoordinates?, completion: @escaping (Result<[NearbyStop], Error>) -> Void)
 }
 
 protocol NearbyStopMainModuleRouterProtocol: AnyObject {

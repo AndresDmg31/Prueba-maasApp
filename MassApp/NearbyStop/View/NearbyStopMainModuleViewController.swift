@@ -22,6 +22,7 @@ class NearbyStopMainModuleViewController: UIViewController, NearbyStopMainModule
     private var locationButton: UIButton!
     private var loadingIndicator: UIActivityIndicatorView!
     private var currentLocationAnnotation: MKPointAnnotation?
+    private var stopAnnotations: [StopAnnotation] = []
 
     // MARK: - Constants
     private let appGreenColor = UIColor(red: 87/255, green: 209/255, blue: 47/255, alpha: 1.0)
@@ -241,6 +242,24 @@ class NearbyStopMainModuleViewController: UIViewController, NearbyStopMainModule
         locationButton.isEnabled = isEnabled
         locationButton.alpha = isEnabled ? 1.0 : 0.6
     }
+
+    func showNearbyStops(_ stops: [NearbyStop]) {
+        removeStopAnnotations()
+
+        for stop in stops {
+            let annotation = StopAnnotation(stop: stop)
+            stopAnnotations.append(annotation)
+        }
+
+        mapView.addAnnotations(stopAnnotations)
+    }
+
+    private func removeStopAnnotations() {
+        if !stopAnnotations.isEmpty {
+            mapView.removeAnnotations(stopAnnotations)
+            stopAnnotations.removeAll()
+        }
+    }
 }
 
 // MARK: - MKMapViewDelegate
@@ -252,31 +271,79 @@ extension NearbyStopMainModuleViewController: MKMapViewDelegate {
             return nil
         }
 
-        guard let pointAnnotation = annotation as? MKPointAnnotation else {
-            return nil
+        if let pointAnnotation = annotation as? MKPointAnnotation {
+            let identifier = "UserLocationAnnotation"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+            if annotationView == nil {
+                annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView?.canShowCallout = true
+            } else {
+                annotationView?.annotation = annotation
+            }
+
+            if let markerView = annotationView as? MKMarkerAnnotationView {
+                markerView.markerTintColor = appGreenColor
+                markerView.glyphImage = UIImage(systemName: "person.fill")
+                markerView.glyphTintColor = .white
+            }
+
+            return annotationView
         }
 
-        let identifier = "UserLocationAnnotation"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if let stopAnnotation = annotation as? StopAnnotation {
+            let identifier = "StopAnnotation"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
 
-        if annotationView == nil {
-            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView?.canShowCallout = true
-        } else {
-            annotationView?.annotation = annotation
+            if annotationView == nil {
+                annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView?.canShowCallout = true
+            } else {
+                annotationView?.annotation = annotation
+            }
+
+            if let markerView = annotationView as? MKMarkerAnnotationView {
+                markerView.markerTintColor = UIColor.systemBlue
+                markerView.glyphImage = UIImage(systemName: "bus.fill")
+                markerView.glyphTintColor = .white
+                markerView.titleVisibility = .visible
+            }
+
+            return annotationView
         }
 
-        if let markerView = annotationView as? MKMarkerAnnotationView {
-            markerView.markerTintColor = appGreenColor
-            markerView.glyphImage = UIImage(systemName: "person.fill")
-            markerView.glyphTintColor = .white
-        }
-
-        return annotationView
+        return nil
     }
 
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        
+
+    }
+}
+
+// MARK: - Stop Annotation
+
+class StopAnnotation: NSObject, MKAnnotation {
+    let stop: NearbyStop
+
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: stop.lat, longitude: stop.lon)
+    }
+
+    var title: String? {
+        return stop.name
+    }
+
+    var subtitle: String? {
+        if let code = stop.code {
+            return "Código: \(code) • \(stop.formattedDistance)"
+        } else {
+            return stop.formattedDistance
+        }
+    }
+
+    init(stop: NearbyStop) {
+        self.stop = stop
+        super.init()
     }
 }
 

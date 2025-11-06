@@ -223,6 +223,7 @@ class CardsListMainModuleViewController: UIViewController, CardsListMainModuleVi
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
+            emptyStateView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 230),
             emptyStateView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             emptyStateView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             emptyStateView.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 40),
